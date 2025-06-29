@@ -3,7 +3,7 @@
   "name": "NEXTPULSE - NEET PG Preparation Platform",
   "short_name": "NEXTPULSE",
   "description": "Your comprehensive NEET-PG preparation platform with video lectures from top institutes",
-  "start_url": "/index2.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a2e",
   "theme_color": "#4f46e5",
