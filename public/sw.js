@@ -1,5 +1,4 @@
 
-
 const CACHE_NAME = 'nextpulse-v1';
 const urlsToCache = [
   '/index2.html',
@@ -31,4 +30,3 @@ self.addEventListener('fetch', (event) => {
     )
   );
 });
-

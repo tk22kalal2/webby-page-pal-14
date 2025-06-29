@@ -167,6 +167,40 @@
       line-height: 1.5;
     }
     
+    .install-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    .install-banner.show {
+      transform: translateY(0);
+    }
+    
+    .install-banner button {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .install-banner button:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    
     @media (max-width: 768px) {
       .container {
         padding: 15px;
@@ -193,6 +227,15 @@
   </style>
 </head>
 <body>
+  <!-- Install Banner -->
+  <div class="install-banner" id="installBanner">
+    <div>
+      📱 Install NEXTPULSE app for better experience!
+      <button id="installBannerBtn">Install</button>
+      <button onclick="document.getElementById('installBanner').classList.remove('show')">✕</button>
+    </div>
+  </div>
+
   <div class="container">
     <div class="logo">
       <i class="fas fa-graduation-cap"></i>
@@ -263,6 +306,8 @@
   <script>
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
+    const installBanner = document.getElementById('installBanner');
+    const installBannerBtn = document.getElementById('installBannerBtn');
 
     // Listen for the beforeinstallprompt event
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -272,10 +317,14 @@
       deferredPrompt = e;
       // Show the install button
       installBtn.style.display = 'inline-flex';
+      // Show install banner after 3 seconds
+      setTimeout(() => {
+        installBanner.classList.add('show');
+      }, 3000);
     });
 
     // Handle install button click
-    installBtn.addEventListener('click', async () => {
+    async function handleInstall() {
       if (deferredPrompt) {
         // Show the install prompt
         deferredPrompt.prompt();
@@ -284,6 +333,7 @@
         
         if (outcome === 'accepted') {
           console.log('User accepted the install prompt');
+          installBanner.classList.remove('show');
         } else {
           console.log('User dismissed the install prompt');
         }
@@ -294,11 +344,15 @@
         // Fallback for iOS or when PWA is not installable
         alert('To install this app:\n\nOn iOS: Tap the Share button and select "Add to Home Screen"\n\nOn Android: Look for "Add to Home Screen" in your browser menu');
       }
-    });
+    }
+
+    installBtn.addEventListener('click', handleInstall);
+    installBannerBtn.addEventListener('click', handleInstall);
 
     // Hide install button if app is already installed
     window.addEventListener('appinstalled', () => {
       installBtn.style.display = 'none';
+      installBanner.classList.remove('show');
       console.log('PWA was installed');
     });
 
@@ -320,6 +374,19 @@
           });
       });
     }
+
+    // Show install prompt automatically for supported browsers
+    window.addEventListener('load', () => {
+      // For iOS Safari - show install instructions
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator.standalone);
+      
+      if (isIOS && !isInStandaloneMode) {
+        setTimeout(() => {
+          installBanner.classList.add('show');
+        }, 2000);
+      }
+    });
   </script>
 </body>
 </html>
