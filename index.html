@@ -4,89 +4,322 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXTPULSE - NEET PG Preparation Platform | Medical Video Lectures</title>
-  <meta name="description" content="NEXTPULSE - Your comprehensive NEET PG preparation platform. Access video lectures from top institutes like Marrow, DAMS, and PrepLadder. Prepare for medical entrance exams with expert faculty.">
-  <meta name="keywords" content="NEET PG, medical entrance, video lectures, Marrow, DAMS, PrepLadder, medical preparation, NEET PG coaching">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="src/home/home.css">
+  <title>NEXTPULSE - NEET PG Preparation Platform | Install Our App</title>
+  <meta name="description" content="Install NEXTPULSE mobile app for comprehensive NEET PG preparation. Access video lectures from top institutes like Marrow, DAMS, and PrepLadder offline.">
+  <meta name="keywords" content="NEET PG app, medical entrance app, video lectures app, Marrow app, DAMS app, PrepLadder app">
+  
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="NEXTPULSE">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5920367457745298"
-     crossorigin="anonymous"></script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: white;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .tagline {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+    
+    .app-description {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .app-description h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    
+    .app-description p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .feature {
+      text-align: center;
+    }
+    
+    .feature i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #ffd700;
+    }
+    
+    .feature h3 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+    
+    .feature p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .btn {
+      padding: 18px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .btn-install {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+      color: white;
+    }
+    
+    .btn-install:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    
+    .btn-whatsapp {
+      background: #25d366;
+      color: white;
+    }
+    
+    .btn-whatsapp:hover {
+      background: #128c7e;
+      transform: translateY(-2px);
+    }
+    
+    .btn-website {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    .btn-website:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+    
+    .install-note {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      
+      .logo {
+        font-size: 2.5rem;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .buttons {
+        gap: 15px;
+      }
+      
+      .btn {
+        padding: 15px 25px;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <h1 id="pageTitle">NEXTPULSE</h1>
-      <p class="header-subtitle">Your Path to NEET-PG Success</p>
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search topics, lectures..." id="searchInput" onfocus="window.location.href='search.html'">
-      </div>
+  <div class="container">
+    <div class="logo">
+      <i class="fas fa-graduation-cap"></i>
+      NEXTPULSE
     </div>
-  </header>
-  <main>
-    <div class="home-page">
-      <div class="welcome-section">
-        <h2>Welcome to NEXTPULSE</h2>
-        <p>Your comprehensive NEET-PG preparation platform</p>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card">
+    <p class="tagline">Your Path to NEET-PG Success</p>
+    
+    <div class="app-description">
+      <h2>📱 Get the NEXTPULSE Mobile App</h2>
+      <p>Transform your NEET-PG preparation with our comprehensive mobile application. Access thousands of video lectures from top medical institutes anytime, anywhere.</p>
+      
+      <div class="features">
+        <div class="feature">
           <i class="fas fa-play-circle"></i>
           <h3>2000+</h3>
           <p>Video Lectures</p>
         </div>
-        <div class="stat-card">
+        <div class="feature">
           <i class="fas fa-book"></i>
           <h3>50+</h3>
-          <p>Subjects Covered</p>
+          <p>Subjects</p>
         </div>
-        <div class="stat-card">
-          <i class="fas fa-graduation-cap"></i>
-          <h3>3</h3>
-          <p>Top Platforms</p>
+        <div class="feature">
+          <i class="fas fa-download"></i>
+          <h3>Offline</h3>
+          <p>Access</p>
         </div>
-      </div>
-      <div class="quick-actions">
-        <h3>Quick Actions</h3>
-        <div class="action-buttons">
-          <button class="action-btn" onclick="window.location.href='platforms.html'">
-            <i class="fas fa-video"></i>
-            Browse Videos
-          </button>
-          <button class="action-btn" onclick="window.location.href='search.html'">
-            <i class="fas fa-search"></i>
-            Search Content
-          </button>
+        <div class="feature">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Mobile</h3>
+          <p>Optimized</p>
         </div>
       </div>
-      <div class="featured-section">
-        <h3>Featured</h3>
-        <div class="featured-grid">
-          <div class="featured-card">
-            <i class="fas fa-star"></i>
-            <h4>Latest Updates</h4>
-            <p>New lectures added daily across all platforms</p>
-          </div>
-          <div class="featured-card">
-            <i class="fas fa-chart-line"></i>
-            <h4>Study Progress</h4>
-            <p>Track your learning journey</p>
-          </div>
-          <div class="featured-card">
-            <i class="fas fa-bolt"></i>
-            <h4>Quick Access</h4>
-            <p>Jump to your favorite subjects</p>
-          </div>
-        </div>
-      </div>
+      
+      <p><strong>Features include:</strong></p>
+      <p>✓ Video lectures from Marrow, DAMS & PrepLadder<br>
+         ✓ Offline viewing capabilities<br>
+         ✓ Question bank with detailed explanations<br>
+         ✓ Progress tracking & bookmarks<br>
+         ✓ Fast search across all content</p>
     </div>
-  </main>
-  <nav class="bottom-nav">
-    <a href="index.html" class="active"><i class="fas fa-lightbulb"></i><span>Home</span></a>
-    <a href="platforms.html"><i class="fas fa-play-circle"></i><span>Videos</span></a>
-    <a href="search.html"><i class="fas fa-search"></i><span>Search</span></a>
-    <a href="quiz/index.html"><i class="fas fa-question-circle"></i><span>Q Bank</span></a>
-  </nav>
+    
+    <div class="buttons">
+      <button class="btn btn-install" id="installBtn">
+        <i class="fas fa-download"></i>
+        Install App
+      </button>
+      
+      <a href="https://whatsapp.com/channel/0029Va5goUJKmCPMfqMeso1D" class="btn btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        Join WhatsApp Channel
+        <small style="display: block; font-size: 0.8rem; opacity: 0.9;">New lecture links and updates will be provided here</small>
+      </a>
+      
+      <a href="/index2.html" class="btn btn-website">
+        <i class="fas fa-globe"></i>
+        Continue to Website
+      </a>
+    </div>
+    
+    <div class="install-note">
+      <p><strong>💡 How to Install:</strong></p>
+      <p><strong>Android:</strong> Tap "Install App" button above or look for "Add to Home Screen" in your browser menu.</p>
+      <p><strong>iOS/iPad:</strong> Tap the Share button in Safari and select "Add to Home Screen".</p>
+    </div>
+  </div>
+
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    // Listen for the beforeinstallprompt event
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = e;
+      // Show the install button
+      installBtn.style.display = 'inline-flex';
+    });
+
+    // Handle install button click
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        
+        // Clear the deferredPrompt variable
+        deferredPrompt = null;
+      } else {
+        // Fallback for iOS or when PWA is not installable
+        alert('To install this app:\n\nOn iOS: Tap the Share button and select "Add to Home Screen"\n\nOn Android: Look for "Add to Home Screen" in your browser menu');
+      }
+    });
+
+    // Hide install button if app is already installed
+    window.addEventListener('appinstalled', () => {
+      installBtn.style.display = 'none';
+      console.log('PWA was installed');
+    });
+
+    // Check if app is already installed (standalone mode)
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+      // App is installed, redirect to main app
+      window.location.href = '/index2.html';
+    }
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('SW registered: ', registration);
+          })
+          .catch((registrationError) => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
 </body>
 </html>

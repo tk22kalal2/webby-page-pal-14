@@ -8,7 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        page2: 'page2.html'
+        app: 'index2.html'
       }
     }
   },
