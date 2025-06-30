@@ -96,37 +96,10 @@
     <a href="quiz/index.html"><i class="fas fa-question-circle"></i><span>Q Bank</span></a>
   </nav>
 
-  <script>
-        // Register service worker for the installed app page as well
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js', { 
-                    scope: '/',
-                    updateViaCache: 'none'
-                })
-                    .then(registration => {
-                        console.log('Service Worker registered with scope:', registration.scope);
-                        
-                        // Check if running as PWA
-                        if (window.matchMedia('(display-mode: standalone)').matches || 
-                            window.navigator.standalone === true) {
-                            console.log('Running as installed PWA');
-                            const pwaStatus = document.getElementById('pwaStatus');
-                            if (pwaStatus) {
-                                pwaStatus.style.display = 'flex';
-                            }
-                        }
-                    })
-                    .catch(error => {
-                        console.log('Service Worker registration failed:', error);
-                    });
-            });
-        }
-        
-        // Handle service worker updates
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-            window.location.reload();
-        });
+  <script src="/scripts.js"></script>
+    <script>
+        // Initialize for installed app
+        initPWA('installed');
     </script>
 </body>
 </html>
