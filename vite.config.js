@@ -8,7 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        landing: 'landing.html',
+        app: 'app.html',
         platforms: 'platforms.html',
         search: 'search.html',
         quiz: 'quiz/index.html'
@@ -17,6 +17,6 @@ export default defineConfig({
   },
   server: {
     port: 8080,
-    open: 'landing.html'
+    open: 'index.html'
   }
 })
