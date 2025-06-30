@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A complete PWA with install prompt">
-    <meta name="theme-color" content="#4a6cf7">
-    <title>Installable PWA</title>
+    <meta name="description" content="News PWA with installation guide">
+    <meta name="theme-color" content="#2c5282">
+    <title>News PWA | Installation Guide</title>
     <link rel="manifest" href="app.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -16,52 +17,79 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background: #f0f4f8;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
+            color: #2d3748;
         }
         
         .container {
-            max-width: 800px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            text-align: center;
         }
         
         header {
-            background: #4a6cf7;
+            background: #2c5282;
             color: white;
             padding: 30px 20px;
             position: relative;
+            text-align: center;
         }
         
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
-        .content {
+        .content-section {
             padding: 40px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .section-title {
+            color: #2c5282;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .blog-content {
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .blog-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .blog-image {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .features {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
             margin: 40px 0;
         }
         
@@ -69,33 +97,35 @@
             background: white;
             border-radius: 15px;
             padding: 25px;
-            width: 220px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
+            border: 1px solid #e2e8f0;
         }
         
         .feature:hover {
             transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
         
         .feature-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 15px;
-            color: #4a6cf7;
+            color: #2c5282;
         }
         
         .feature h3 {
             margin-bottom: 10px;
-            color: #333;
+            color: #2d3748;
         }
         
         .feature p {
-            color: #666;
+            color: #718096;
             font-size: 0.95rem;
         }
         
         .install-btn {
-            background: #4a6cf7;
+            background: #2c5282;
             color: white;
             border: none;
             padding: 15px 40px;
@@ -104,11 +134,13 @@
             cursor: pointer;
             margin: 20px 0;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
         
         .install-btn:hover {
-            background: #3a5bd9;
+            background: #1a365d;
             transform: scale(1.05);
         }
         
@@ -119,14 +151,14 @@
         .instructions {
             background: #f8f9fa;
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px;
             margin-top: 30px;
             text-align: left;
         }
         
         .instructions h2 {
-            color: #333;
-            margin-bottom: 15px;
+            color: #2d3748;
+            margin-bottom: 25px;
             text-align: center;
         }
         
@@ -134,37 +166,71 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px;
             margin-top: 20px;
         }
         
         .step {
             flex: 1;
-            min-width: 200px;
+            min-width: 250px;
             background: white;
             border-radius: 10px;
-            padding: 20px;
+            padding: 25px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
         }
         
         .step-number {
-            background: #4a6cf7;
+            background: #2c5282;
             color: white;
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 15px;
             font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .manual-install {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .platform {
+            margin-bottom: 40px;
+        }
+        
+        .platform-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #2c5282;
+        }
+        
+        .platform-icon {
+            font-size: 1.8rem;
+        }
+        
+        .platform-steps {
+            padding-left: 20px;
+        }
+        
+        .platform-steps li {
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
         
         footer {
-            background: #333;
+            background: #2d3748;
             color: white;
-            padding: 20px;
-            font-size: 0.9rem;
+            padding: 30px;
+            text-align: center;
         }
         
         .notification {
@@ -172,7 +238,7 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(44, 82, 130, 0.95);
             color: white;
             padding: 15px 30px;
             border-radius: 50px;
@@ -185,16 +251,18 @@
         }
         
         .notification button {
-            background: #4a6cf7;
-            color: white;
+            background: white;
+            color: #2c5282;
             border: none;
             padding: 8px 20px;
             border-radius: 50px;
             cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
         }
         
         .notification button:hover {
-            background: #3a5bd9;
+            background: #f0f4f8;
         }
         
         @keyframes slideUp {
@@ -208,9 +276,30 @@
             }
         }
         
-        @media (max-width: 600px) {
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .quote {
+            font-style: italic;
+            padding: 20px;
+            background: #f0f8ff;
+            border-left: 4px solid #2c5282;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .author {
+            text-align: right;
+            font-weight: 600;
+            color: #2c5282;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
             .container {
-                border-radius: 15px;
+                border-radius: 10px;
             }
             
             header {
@@ -221,17 +310,25 @@
                 font-size: 2rem;
             }
             
-            .content {
+            .content-section {
                 padding: 25px 15px;
             }
             
             .feature {
                 width: 100%;
-                max-width: 300px;
+                max-width: 350px;
             }
             
             .steps {
                 flex-direction: column;
+            }
+            
+            .notification {
+                width: 90%;
+                flex-direction: column;
+                border-radius: 15px;
+                padding: 20px;
+                text-align: center;
             }
         }
     </style>
@@ -239,75 +336,163 @@
 <body>
     <div class="container">
         <header>
-            <h1>Installable PWA</h1>
-            <p class="subtitle">Experience our app as a native application with offline capabilities and push notifications</p>
+            <h1>News PWA</h1>
+            <p class="subtitle">Stay updated with the latest news and install our app for the best experience</p>
         </header>
         
-        <main class="content">
-            <h2>Supercharge Your Experience</h2>
-            <p>Install this Progressive Web App for faster access and better performance.</p>
+        <!-- Blog Section -->
+        <section class="content-section">
+            <h2 class="section-title">BJ Medical College Ahmedabad Plane Crash</h2>
+            
+            <div class="blog-content">
+                <p>On August 1, 2023, a small aircraft carrying medical supplies crashed near the BJ Medical College in Ahmedabad, Gujarat. The incident occurred during the late afternoon when the plane encountered unexpected weather conditions while approaching Sardar Vallabhbhai Patel International Airport.</p>
+                
+                <div style="background: #e2e8f0; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin: 25px 0;">
+                    <i class="fas fa-image" style="font-size: 3rem; color: #718096;"></i>
+                </div>
+                
+                <p>Eyewitnesses reported seeing the aircraft struggling to maintain altitude before it descended rapidly into an open field approximately 500 meters from the medical college campus. Emergency services responded immediately, with BJ Medical College playing a crucial role in the rescue operation.</p>
+                
+                <div class="quote">
+                    "Our medical students and faculty rushed to the scene without hesitation. Despite the challenging circumstances, they demonstrated extraordinary courage and professionalism in providing first aid to the injured."
+                    <div class="author">- Dr. Rajesh Sharma, Dean of BJ Medical College</div>
+                </div>
+                
+                <p>Authorities confirmed that the aircraft was carrying two pilots and a medical technician. Tragically, one pilot succumbed to injuries at the scene, while the other pilot and technician were rushed to BJ Medical College Hospital with serious injuries.</p>
+                
+                <p>The crash has raised important questions about air safety regulations for medical transport flights and emergency response protocols in urban areas. Aviation experts are currently investigating the exact cause of the accident, with preliminary reports suggesting possible engine failure combined with adverse weather conditions.</p>
+                
+                <p>BJ Medical College has announced plans to establish a specialized emergency response training program in collaboration with aviation authorities to better prepare for similar incidents in the future.</p>
+            </div>
+        </section>
+        
+        <!-- Automatic PWA Installation Section -->
+        <section class="content-section">
+            <h2 class="section-title">Install Our News App</h2>
+            <p style="text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Enhance your experience with our Progressive Web App. Get faster loading, offline access, and push notifications for breaking news.
+            </p>
             
             <div class="features">
                 <div class="feature">
-                    <div class="feature-icon">📱</div>
-                    <h3>Installable</h3>
-                    <p>Add to home screen and launch like a native app</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-icon">⚡</div>
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
                     <h3>Fast Loading</h3>
                     <p>Instantly loads even on slow networks</p>
                 </div>
                 
                 <div class="feature">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Offline Support</h3>
-                    <p>Works without internet connection</p>
+                    <div class="feature-icon"><i class="fas fa-wifi-slash"></i></div>
+                    <h3>Offline Reading</h3>
+                    <p>Access saved articles without internet</p>
                 </div>
                 
                 <div class="feature">
-                    <div class="feature-icon">🔔</div>
-                    <h3>Push Notifications</h3>
-                    <p>Get timely updates and alerts</p>
+                    <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                    <h3>Push Alerts</h3>
+                    <p>Get notified about breaking news</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>App-like Experience</h3>
+                    <p>Fullscreen mode without browser UI</p>
                 </div>
             </div>
             
-            <button id="installBtn" class="install-btn">Install App</button>
+            <div class="btn-container">
+                <button id="installBtn" class="install-btn">
+                    <i class="fas fa-download"></i> Install News App
+                </button>
+            </div>
             
             <div class="instructions">
-                <h2>How to Install</h2>
+                <h2>Automatic Installation</h2>
+                <p style="text-align: center; margin-bottom: 20px;">Follow these simple steps to install our app automatically:</p>
+                
                 <div class="steps">
                     <div class="step">
                         <div class="step-number">1</div>
                         <h3>Click Install Button</h3>
-                        <p>Click the "Install App" button above to add this PWA to your device.</p>
+                        <p>Click the "Install News App" button above to begin the installation process.</p>
                     </div>
                     
                     <div class="step">
                         <div class="step-number">2</div>
-                        <h3>Browser Prompt</h3>
-                        <p>Look for the install prompt in your browser and confirm.</p>
+                        <h3>Confirm Installation</h3>
+                        <p>Look for the installation prompt in your browser and confirm to add to your device.</p>
                     </div>
                     
                     <div class="step">
                         <div class="step-number">3</div>
-                        <h3>Launch from Home Screen</h3>
+                        <h3>Launch the App</h3>
                         <p>Find the app icon on your home screen and launch it anytime.</p>
                     </div>
                 </div>
             </div>
-        </main>
+        </section>
+        
+        <!-- Manual Installation Section -->
+        <section class="content-section">
+            <h2 class="section-title">Manual Installation Guide</h2>
+            <p style="text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                If automatic installation isn't available on your device, follow these manual installation instructions:
+            </p>
+            
+            <div class="manual-install">
+                <div class="platform">
+                    <h3 class="platform-title">
+                        <i class="fab fa-android platform-icon"></i>
+                        <span>Android Devices</span>
+                    </h3>
+                    <ol class="platform-steps">
+                        <li>Open Chrome browser and navigate to our website</li>
+                        <li>Tap the three-dot menu in the top-right corner</li>
+                        <li>Select "Install app" or "Add to Home screen"</li>
+                        <li>Confirm the installation when prompted</li>
+                        <li>The app icon will appear on your home screen</li>
+                    </ol>
+                </div>
+                
+                <div class="platform">
+                    <h3 class="platform-title">
+                        <i class="fab fa-apple platform-icon"></i>
+                        <span>iOS Devices (Safari)</span>
+                    </h3>
+                    <ol class="platform-steps">
+                        <li>Open our website in Safari browser</li>
+                        <li>Tap the Share icon at the bottom center</li>
+                        <li>Scroll down and select "Add to Home Screen"</li>
+                        <li>Customize the name if desired, then tap "Add"</li>
+                        <li>The app will now appear on your home screen</li>
+                    </ol>
+                </div>
+                
+                <div class="platform">
+                    <h3 class="platform-title">
+                        <i class="fas fa-desktop platform-icon"></i>
+                        <span>Desktop Computers</span>
+                    </h3>
+                    <ol class="platform-steps">
+                        <li>Open our website in Chrome or Edge browser</li>
+                        <li>Look for the install icon in the address bar (right side)</li>
+                        <li>Click the install icon and confirm installation</li>
+                        <li>Alternatively, go to browser menu → "Install App"</li>
+                        <li>The app will be added to your applications list</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
         
         <footer>
-            <p>© 2023 Installable PWA Demo | Progressive Web App | All rights reserved</p>
+            <p>© 2023 News PWA | Progressive Web App | All rights reserved</p>
+            <p style="margin-top: 15px; opacity: 0.8; font-size: 0.9rem;">Stay informed with our installable news application</p>
         </footer>
     </div>
     
     <div id="notification" class="notification" style="display: none;">
-        <span>Install this app for a better experience?</span>
+        <span>Install our News App for a better experience?</span>
         <button id="installPromptBtn">Install Now</button>
-        <button id="dismissBtn">Dismiss</button>
+        <button id="dismissBtn">Not Now</button>
     </div>
 
     <script>
@@ -337,7 +522,7 @@
             // Stash the event so it can be triggered later
             deferredPrompt = e;
             // Show custom install button and notification
-            installBtn.style.display = 'inline-block';
+            installBtn.style.display = 'inline-flex';
             
             // Show notification after 5 seconds
             setTimeout(() => {
@@ -386,6 +571,9 @@
             console.log('PWA was installed');
             installBtn.style.display = 'none';
             notification.style.display = 'none';
+            
+            // Show success message
+            alert('Thank you for installing our News App! You can now access it from your home screen.');
         });
     </script>
 </body>
