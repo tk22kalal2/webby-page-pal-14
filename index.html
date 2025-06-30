@@ -522,7 +522,7 @@
             // Stash the event so it can be triggered later
             deferredPrompt = e;
             // Show custom install button and notification
-            installBtn.style.display = 'inline-flex';
+            installBtn.style.display = 'inline-block';
             
             // Show notification after 5 seconds
             setTimeout(() => {
@@ -571,9 +571,6 @@
             console.log('PWA was installed');
             installBtn.style.display = 'none';
             notification.style.display = 'none';
-            
-            // Show success message
-            alert('Thank you for installing our News App! You can now access it from your home screen.');
         });
     </script>
 </body>
