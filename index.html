@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <meta name="description" content="News PWA with installation guide">
     <meta name="theme-color" content="#2c5282">
     <title>News PWA | Installation Guide</title>
-    <link rel="manifest" href="app.webmanifest">
+    <link rel="manifest" href="/app.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -496,12 +497,29 @@
     </div>
 
     <script>
-        // Register service worker
+        // Register service worker with proper scope for custom domain
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js', { scope: '/' })
+                navigator.serviceWorker.register('/sw.js', { 
+                    scope: '/',
+                    updateViaCache: 'none'
+                })
                     .then(registration => {
                         console.log('Service Worker registered with scope:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New service worker is available, prompt user to refresh
+                                    if (confirm('New version available! Refresh to update?')) {
+                                        newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        });
                     })
                     .catch(error => {
                         console.log('Service Worker registration failed:', error);
@@ -522,27 +540,41 @@
             // Stash the event so it can be triggered later
             deferredPrompt = e;
             // Show custom install button and notification
-            installBtn.style.display = 'inline-block';
+            if (installBtn) {
+                installBtn.style.display = 'inline-flex';
+            }
             
-            // Show notification after 5 seconds
+            // Show notification after 2 seconds
             setTimeout(() => {
-                notification.style.display = 'flex';
+                if (notification) {
+                    notification.style.display = 'flex';
+                }
             }, 2000);
         });
         
         // Button click handlers
-        installBtn.addEventListener('click', () => {
-            showInstallPrompt();
-        });
+        if (installBtn) {
+            installBtn.addEventListener('click', () => {
+                showInstallPrompt();
+            });
+        }
         
-        installPromptBtn.addEventListener('click', () => {
-            showInstallPrompt();
-            notification.style.display = 'none';
-        });
+        if (installPromptBtn) {
+            installPromptBtn.addEventListener('click', () => {
+                showInstallPrompt();
+                if (notification) {
+                    notification.style.display = 'none';
+                }
+            });
+        }
         
-        dismissBtn.addEventListener('click', () => {
-            notification.style.display = 'none';
-        });
+        if (dismissBtn) {
+            dismissBtn.addEventListener('click', () => {
+                if (notification) {
+                    notification.style.display = 'none';
+                }
+            });
+        }
         
         function showInstallPrompt() {
             if (deferredPrompt) {
@@ -561,7 +593,9 @@
                     deferredPrompt = null;
                     
                     // Hide the install button
-                    installBtn.style.display = 'none';
+                    if (installBtn) {
+                        installBtn.style.display = 'none';
+                    }
                 });
             }
         }
@@ -569,8 +603,12 @@
         // Track if the app is successfully installed
         window.addEventListener('appinstalled', () => {
             console.log('PWA was installed');
-            installBtn.style.display = 'none';
-            notification.style.display = 'none';
+            if (installBtn) {
+                installBtn.style.display = 'none';
+            }
+            if (notification) {
+                notification.style.display = 'none';
+            }
         });
     </script>
 </body>
