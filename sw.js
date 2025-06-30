@@ -2,7 +2,7 @@ const CACHE_NAME = 'nextpulse-pwa-v1';
 const urlsToCache = [
   '/',
   'index.html',
-  'landing.html',
+  'app.html',
   'platforms.html',
   'search.html',
   'quiz/index.html',
@@ -39,7 +39,7 @@ self.addEventListener('fetch', event => {
   // Handle navigation requests
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      caches.match('index.html').then(response => {
+      caches.match('app.html').then(response => {
         return response || fetch(event.request).catch(() => {
           return caches.match('index.html');
         });
