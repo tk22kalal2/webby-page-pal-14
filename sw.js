@@ -21,28 +21,19 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache.map(url => new Request(url, {cache: 'reload'})));
-      })
-      .catch(error => {
-        console.log('Cache addAll failed:', error);
+        return cache.addAll(urlsToCache);
       })
   );
 });
 
 // Serve cached content when offline
 self.addEventListener('fetch', event => {
-  // Skip cross-origin requests
-  if (!event.request.url.startsWith(self.location.origin)) {
-    return;
-  }
-  
   // Handle navigation requests
   if (event.request.mode === 'navigate') {
+    // For installed app, serve app.html as the home page
     event.respondWith(
       caches.match('app.html').then(response => {
-        return response || fetch(event.request).catch(() => {
-          return caches.match('index.html');
-        });
+        return response || fetch(event.request);
       })
     );
     return;
@@ -58,29 +49,7 @@ self.addEventListener('fetch', event => {
         }
         
         // Otherwise fetch from network
-        return fetch(event.request).then(response => {
-          // Don't cache non-successful responses
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          
-          // Clone the response
-          const responseToCache = response.clone();
-          
-          // Add to cache
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-          
-          return response;
-        });
-      })
-      .catch(() => {
-        // Return offline fallback for HTML pages
-        if (event.request.destination === 'document') {
-          return caches.match('index.html');
-        }
+        return fetch(event.request);
       })
   );
 });
@@ -99,23 +68,5 @@ self.addEventListener('activate', event => {
         })
       );
     })
-  );
-});
-
-// Handle push notifications (for future use)
-self.addEventListener('push', event => {
-  const options = {
-    body: event.data ? event.data.text() : 'New content available!',
-    icon: 'icon-192.png',
-    badge: 'icon-192.png',
-    vibrate: [100, 50, 100],
-    data: {
-      dateOfArrival: Date.now(),
-      primaryKey: 1
-    }
-  };
-  
-  event.waitUntil(
-    self.registration.showNotification('NEXTPULSE', options)
   );
 });
