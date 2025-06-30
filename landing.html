@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXTPULSE - Your comprehensive NEET-PG preparation platform">
+    <meta name="theme-color" content="#4a6cf7">
+    <title>NEXTPULSE - Install PWA</title>
+    <link rel="manifest" href="app.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        header {
+            padding: 40px 0;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .content {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .install-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .install-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .instructions {
+            margin-top: 40px;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .step {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .step-number {
+            background: #4a6cf7;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: none;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        
+        .notification button {
+            background: #4a6cf7;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .notification button:hover {
+            background: #3a5ce7;
+        }
+        
+        .notification button:last-child {
+            background: transparent;
+            border: 1px solid #ccc;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .feature i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ffa726;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NEXTPULSE</h1>
+            <p class="subtitle">Your comprehensive NEET-PG preparation platform</p>
+        </header>
+        
+        <main class="content">
+            <h2>Install Our PWA for Better Experience</h2>
+            <p>Get faster access, offline capabilities, and native app experience.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-download"></i>
+                    <h3>Easy Installation</h3>
+                    <p>Install directly from your browser</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Lightning Fast</h3>
+                    <p>Instant loading and smooth performance</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Works Offline</h3>
+                    <p>Access content even without internet</p>
+                </div>
+            </div>
+                        
+            <button id="installBtn" class="install-btn">
+                <i class="fas fa-download"></i> Install NEXTPULSE App
+            </button>
+            
+            <div class="instructions">
+                <h2>How to Install</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Click Install Button</h3>
+                        <p>Click the "Install NEXTPULSE App" button above to add this PWA to your device.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Browser Prompt</h3>
+                        <p>Look for the install prompt in your browser and confirm installation.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Launch from Home Screen</h3>
+                        <p>Find the NEXTPULSE app icon on your home screen and launch it anytime.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <a href="index.html" style="color: #ffa726; text-decoration: none;">
+                    <i class="fas fa-external-link-alt"></i> Continue to Website
+                </a>
+            </div>
+        </main>
+    </div>
+    
+    <div id="notification" class="notification">
+        <span><i class="fas fa-mobile-alt"></i> Install NEXTPULSE app for a better experience?</span>
+        <button id="installPromptBtn">Install Now</button>
+        <button id="dismissBtn">Dismiss</button>
+    </div>
+
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js', { scope: '/' })
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+        
+        // Handle install prompt
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+        const installPromptBtn = document.getElementById('installPromptBtn');
+        const dismissBtn = document.getElementById('dismissBtn');
+        const notification = document.getElementById('notification');
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
+            // Show custom install button and notification
+            installBtn.style.display = 'inline-block';
+            
+            // Show notification after 5 seconds
+            setTimeout(() => {
+                notification.style.display = 'flex';
+            }, 5000);
+        });
+        
+        // Button click handlers
+        installBtn.addEventListener('click', () => {
+            showInstallPrompt();
+        });
+        
+        installPromptBtn.addEventListener('click', () => {
+            showInstallPrompt();
+            notification.style.display = 'none';
+        });
+        
+        dismissBtn.addEventListener('click', () => {
+            notification.style.display = 'none';
+        });
+        
+        function showInstallPrompt() {
+            if (deferredPrompt) {
+                // Show the install prompt
+                deferredPrompt.prompt();
+                
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    
+                    // Reset the deferred prompt variable
+                    deferredPrompt = null;
+                    
+                    // Hide the install button
+                    installBtn.style.display = 'none';
+                });
+            }
+        }
+        
+        // Track if the app is successfully installed
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            installBtn.style.display = 'none';
+            notification.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

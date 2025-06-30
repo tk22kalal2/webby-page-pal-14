@@ -7,6 +7,8 @@
   <title>NEXTPULSE - NEET PG Preparation Platform | Medical Video Lectures</title>
   <meta name="description" content="NEXTPULSE - Your comprehensive NEET PG preparation platform. Access video lectures from top institutes like Marrow, DAMS, and PrepLadder. Prepare for medical entrance exams with expert faculty.">
   <meta name="keywords" content="NEET PG, medical entrance, video lectures, Marrow, DAMS, PrepLadder, medical preparation, NEET PG coaching">
+  <meta name="theme-color" content="#4a6cf7">
+  <link rel="manifest" href="app.webmanifest">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="src/home/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -29,6 +31,10 @@
       <div class="welcome-section">
         <h2>Welcome to NEXTPULSE</h2>
         <p>Your comprehensive NEET-PG preparation platform</p>
+        <div class="pwa-status" id="pwaStatus" style="display: none;">
+          <i class="fas fa-mobile-alt"></i>
+          <span>You're using the installed app version!</span>
+        </div>
       </div>
       <div class="stats-grid">
         <div class="stat-card">
@@ -88,5 +94,36 @@
     <a href="search.html"><i class="fas fa-search"></i><span>Search</span></a>
     <a href="quiz/index.html"><i class="fas fa-question-circle"></i><span>Q Bank</span></a>
   </nav>
+
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js', { scope: '/' })
+          .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(error => {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
+    }
+
+    // Check if app is installed and running in standalone mode
+    function checkIfPWA() {
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+      const isInWebAppiOS = window.navigator.standalone === true;
+      const isInWebAppChrome = window.matchMedia('(display-mode: standalone)').matches;
+      
+      if (isStandalone || isInWebAppiOS || isInWebAppChrome) {
+        document.getElementById('pwaStatus').style.display = 'block';
+        // Add PWA-specific styling
+        document.body.classList.add('pwa-mode');
+      }
+    }
+
+    // Check PWA status on load
+    window.addEventListener('load', checkIfPWA);
+  </script>
 </body>
 </html>
