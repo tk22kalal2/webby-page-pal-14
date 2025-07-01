@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>NEXTPULSE - NEET PG Preparation Platform | Medical Video Lectures</title>
   <meta name="description" content="NEXTPULSE - Your comprehensive NEET PG preparation platform. Access video lectures from top institutes like Marrow, DAMS, and PrepLadder. Prepare for medical entrance exams with expert faculty.">
   <meta name="keywords" content="NEET PG, medical entrance, video lectures, Marrow, DAMS, PrepLadder, medical preparation, NEET PG coaching">
@@ -11,6 +11,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
+  <meta name="screen-orientation" content="any">
   <link rel="manifest" href="https://web.afrahtafreeh.site/app.webmanifest">
   <link rel="stylesheet" href="https://web.afrahtafreeh.site/styles.css">
   <link rel="stylesheet" href="https://web.afrahtafreeh.site/src/home/home.css">
@@ -18,6 +19,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5920367457745298"
      crossorigin="anonymous"></script>
+  <style>
+    /* Force orientation flexibility */
+    @media screen and (orientation: landscape) {
+      body {
+        overflow-x: auto;
+      }
+    }
+    
+    @media screen and (orientation: portrait) {
+      body {
+        overflow-x: hidden;
+      }
+    }
+    
+    /* Ensure proper scaling for all orientations */
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+    }
+    
+    @media (min-width: 768px) {
+      html, body {
+        overflow-x: auto;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>

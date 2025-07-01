@@ -1,7 +1,7 @@
 
 {
   "name": "NEXTPULSE - NEET PG Preparation",
-  "short_name": "NEXTPULSE",
+  "short_name": "NEXTPULSE", 
   "description": "Your comprehensive NEET-PG preparation platform with video lectures and Q Bank",
   "start_url": "https://web.afrahtafreeh.site/app.html",
   "scope": "https://web.afrahtafreeh.site/",
@@ -18,7 +18,7 @@
     },
     {
       "src": "https://web.afrahtafreeh.site/icon-512.png",
-      "sizes": "512x512",
+      "sizes": "512x512", 
       "type": "image/png",
       "purpose": "any maskable"
     }

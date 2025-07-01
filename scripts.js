@@ -1,3 +1,4 @@
+
 // Initialize PWA functionality
 function initPWA(pageType) {
     // Register service worker with absolute path
@@ -9,6 +10,13 @@ function initPWA(pageType) {
             .catch(error => {
                 console.error('Service Worker registration failed:', error);
             });
+    }
+    
+    // Force orientation unlock for PWA
+    if (screen && screen.orientation && screen.orientation.unlock) {
+        screen.orientation.unlock().catch(e => {
+            console.log('Orientation unlock not supported or failed:', e);
+        });
     }
     
     // Handle install prompt only on landing page
