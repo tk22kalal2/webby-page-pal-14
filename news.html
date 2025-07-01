@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Medical College News - NEXTPULSE</title>
+  <meta name="description" content="Latest news and updates from medical colleges across India - NEXTPULSE">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="screen-orientation" content="any">
+  <link rel="manifest" href="https://web.afrahtafreeh.site/app.webmanifest">
+  <link rel="stylesheet" href="https://web.afrahtafreeh.site/styles.css">
+  <link rel="stylesheet" href="https://web.afrahtafreeh.site/news-styles.css">
+  <base href="https://web.afrahtafreeh.site/">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1 id="pageTitle">Medical College News</h1>
+      <p class="header-subtitle">Latest Updates from Medical Education</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="news-container">
+      <!-- Table of Contents -->
+      <div class="table-of-contents">
+        <h2><i class="fas fa-list"></i> Table of Contents</h2>
+        <ul id="tocList">
+          <li><a href="#news-1">Air India Crash at BJ Medical College</a></li>
+          <li><a href="#news-2">R.G. Kar Medical College Incident</a></li>
+          <li><a href="#news-3">Telangana Medical College Crisis</a></li>
+          <li><a href="#news-4">Kerala Doctor Suicide Case</a></li>
+          <li><a href="#news-5">Tamil Nadu Staffing Shortages</a></li>
+        </ul>
+      </div>
+
+      <!-- News Cards -->
+      <div class="news-grid">
+        <!-- News 1 -->
+        <div class="news-card" id="news-1">
+          <div class="card-header">
+            <div class="news-image">
+              <i class="fas fa-plane-slash"></i>
+            </div>
+            <div class="card-preview">
+              <h3>Air India Dreamliner Crash at BJ Medical College</h3>
+              <div class="news-meta">
+                <span class="date"><i class="fas fa-calendar"></i> June 12, 2025</span>
+                <span class="location"><i class="fas fa-map-marker-alt"></i> Ahmedabad</span>
+              </div>
+              <p class="preview-text">Air India flight crashes into BJ Medical College hostel, highlighting safety risks for medical students...</p>
+            </div>
+            <button class="expand-btn" onclick="toggleCard(this)">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="full-content">
+              <h4>Incident Details</h4>
+              <p>An Air India flight (AI171) bound for London crashed into the hostel of BJ Medical College in Ahmedabad shortly after takeoff, killing 241 onboard and 19 on the ground. The crash destroyed part of the medical college hostel, injuring dozens of students.</p>
+              <h4>Impact on Medical Education</h4>
+              <p>The sole survivor was a passenger seated near an emergency exit. The incident highlighted safety risks for medical students, as the hostel was unprepared for such a disaster. DNA identification of victims continued for weeks.</p>
+              <div class="severity-badge critical">Critical Incident</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News 2 -->
+        <div class="news-card" id="news-2">
+          <div class="card-header">
+            <div class="news-image">
+              <i class="fas fa-gavel"></i>
+            </div>
+            <div class="card-preview">
+              <h3>R.G. Kar Medical College Case</h3>
+              <div class="news-meta">
+                <span class="date"><i class="fas fa-calendar"></i> August 9, 2024 - Ongoing</span>
+                <span class="location"><i class="fas fa-map-marker-alt"></i> Kolkata</span>
+              </div>
+              <p class="preview-text">Trainee doctor case leads to nationwide protests and Supreme Court intervention...</p>
+            </div>
+            <button class="expand-btn" onclick="toggleCard(this)">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="full-content">
+              <h4>Case Background</h4>
+              <p>A trainee doctor was raped and murdered on campus, leading to nationwide protests. The Supreme Court took suo moto cognizance, forming a task force for doctor safety protocols.</p>
+              <h4>Legal Proceedings</h4>
+              <p>The CBI clarified it was not a gang rape but continued probing evidence destruction and cover-up allegations. The accused, a former civic police volunteer, was sentenced to life imprisonment in January 2025, but protests over unsafe conditions persisted.</p>
+              <div class="severity-badge high">High Priority</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News 3 -->
+        <div class="news-card" id="news-3">
+          <div class="card-header">
+            <div class="news-image">
+              <i class="fas fa-building"></i>
+            </div>
+            <div class="card-preview">
+              <h3>Telangana Medical College Expansion Crisis</h3>
+              <div class="news-meta">
+                <span class="date"><i class="fas fa-calendar"></i> June 27, 2025</span>
+                <span class="location"><i class="fas fa-map-marker-alt"></i> Telangana</span>
+              </div>
+              <p class="preview-text">Rapid expansion from 5 to 34 colleges leaves many facilities understaffed and dysfunctional...</p>
+            </div>
+            <button class="expand-btn" onclick="toggleCard(this)">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="full-content">
+              <h4>Expansion Issues</h4>
+              <p>Telangana's rapid expansion of government medical colleges (from 5 to 34 since 2014) left many facilities understaffed and dysfunctional. Students reported overcrowded hostels, unpaid faculty, and lack of basic infrastructure.</p>
+              <h4>Regulatory Response</h4>
+              <p>The NMC issued show-cause notices to 26 colleges. Key issues include unopened hospitals (e.g., Siddipet's 1,000-bed hospital remains unused since 2023) and faculty shortages (1,736 out of 3,143 assistant professor posts vacant).</p>
+              <div class="severity-badge medium">Infrastructure Crisis</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News 4 -->
+        <div class="news-card" id="news-4">
+          <div class="card-header">
+            <div class="news-image">
+              <i class="fas fa-heart-broken"></i>
+            </div>
+            <div class="card-preview">
+              <h3>Senior Resident Doctor Suicide</h3>
+              <div class="news-meta">
+                <span class="date"><i class="fas fa-calendar"></i> March 26, 2024</span>
+                <span class="location"><i class="fas fa-map-marker-alt"></i> Kerala</span>
+              </div>
+              <p class="preview-text">Mental health crisis among resident doctors highlighted by tragic incident...</p>
+            </div>
+            <button class="expand-btn" onclick="toggleCard(this)">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="full-content">
+              <h4>Incident Details</h4>
+              <p>Dr. Abhirami Balakrishnan, a senior resident at Thiruvananthapuram Government Medical College, was found dead in her flat from a suspected IV drug overdose.</p>
+              <h4>Systemic Issues</h4>
+              <p>Police cited personal struggles but noted systemic stress among resident doctors. This incident highlights the urgent need for mental health support systems in medical education institutions.</p>
+              <div class="severity-badge high">Mental Health Crisis</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News 5 -->
+        <div class="news-card" id="news-5">
+          <div class="card-header">
+            <div class="news-image">
+              <i class="fas fa-user-md"></i>
+            </div>
+            <div class="card-preview">
+              <h3>Tamil Nadu Medical College Staffing Crisis</h3>
+              <div class="news-meta">
+                <span class="date"><i class="fas fa-calendar"></i> Recent</span>
+                <span class="location"><i class="fas fa-map-marker-alt"></i> Tamil Nadu</span>
+              </div>
+              <p class="preview-text">Severe faculty shortages affect quality of medical education across the state...</p>
+            </div>
+            <button class="expand-btn" onclick="toggleCard(this)">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <div class="full-content">
+              <h4>Staffing Crisis</h4>
+              <p>Tamil Nadu's health minister dismissed NMC notices about vacancies in 35/36 government medical colleges as "routine," but doctors' associations revealed 700+ unfilled posts, including 400 assistant professors.</p>
+              <h4>Root Causes</h4>
+              <p>The crisis stems from delayed promotions and ongoing litigation. This shortage directly impacts the quality of medical education and patient care in government hospitals.</p>
+              <div class="severity-badge medium">Staffing Crisis</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="app.html"><i class="fas fa-lightbulb"></i><span>Home</span></a>
+    <a href="platforms.html"><i class="fas fa-play-circle"></i><span>Videos</span></a>
+    <a href="search.html"><i class="fas fa-search"></i><span>Search</span></a>
+    <a href="news.html" class="active"><i class="fas fa-newspaper"></i><span>News</span></a>
+    <a href="quiz/index.html"><i class="fas fa-question-circle"></i><span>Q Bank</span></a>
+  </nav>
+
+  <script src="/scripts.js"></script>
+  <script src="/news-script.js"></script>
+  <script>
+    initPWA('news');
+  </script>
+</body>
+</html>
