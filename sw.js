@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nextpulse-pwa-v4';
+const CACHE_NAME = 'nextpulse-pwa-v5';
 const BASE_URL = self.location.origin;
 
 // Define URLs to cache with proper domain handling
